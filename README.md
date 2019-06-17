@@ -16,6 +16,7 @@ makes CaptchaArt fun!
 
 - `php generate.php` – Generate a single captcha.
 - `php generate.php 100` – Generate 100 captchas.
+- `php generate.php 100 directory` – Generate 100 captchas in `directory`
 
 All captchas will be saved in the directory `captchas` under the same name as the captcha text.
 

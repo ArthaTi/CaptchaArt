@@ -40,8 +40,13 @@ $img->image_width  = 95 * M_E;
 // Don't stop afterwards
 $img->no_exit = true;
 
-// Amount of captchas
+// Arguments
 $amount = $argv[1] ?: 1;
+$img->location = (@$argv[2] ?: __DIR__ . "/captchas") . "/";
+
+if (!is_dir($img->location)) {
+    exit("Directory $argv[2] doesn't exist.");
+}
 
 echo "Generating $amount captchas...\n";
 

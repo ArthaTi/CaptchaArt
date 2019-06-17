@@ -1009,6 +1009,11 @@ class Securimage
     public $gdsignaturecolor;
 
     /**
+     * Location to save images in.
+     */
+    public $location;
+
+    /**
      * Create a new securimage object, pass options to set in the constructor.
      *
      * The object can then be used to display a captcha, play an audible captcha, or validate a submission.
@@ -2395,15 +2400,15 @@ class Securimage
             switch ($this->image_type) {
                 case self::SI_IMAGE_JPEG:
                     if ($this->send_headers) header("Content-Type: image/jpeg");
-                    imagejpeg($this->im, __DIR__ . "/captchas/" . $this->code_display . ".png", 90);
+                    imagejpeg($this->im, $this->location . "/" . $this->code_display . ".jpg", 90);
                     break;
                 case self::SI_IMAGE_GIF:
                     if ($this->send_headers) header("Content-Type: image/gif");
-                    imagegif($this->im, __DIR__ . "/captchas/" . $this->code_display . ".png");
+                    imagegif($this->im, $this->location . "/" . $this->code_display . ".gif");
                     break;
                 default:
                     if ($this->send_headers) header("Content-Type: image/png");
-                    imagepng($this->im, __DIR__ . "/captchas/" . $this->code_display . ".png");
+                    imagepng($this->im, $this->location . "/" . $this->code_display . ".png");
                     break;
             }
         } else {
